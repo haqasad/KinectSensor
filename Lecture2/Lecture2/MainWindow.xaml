@@ -1,0 +1,16 @@
+﻿<Window x:Class="Lecture2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        Title="KinectInfoBox" Height="350" Width="525" Loaded = "WindowLoaded" Closing = "WindowClosing">
+    <Grid>
+        <Label Content="Kinect InfoBox" Height="39" HorizontalAlignment="Left" Margin="12,12,0,0" Name="asad"></Label>
+        <Label Content="ConnectionID" Height="26" HorizontalAlignment="Left" Margin="12,43,0,0" Name="ridoy"></Label>
+        <Label Content="Status" Height="27" HorizontalAlignment="Left" Margin="12,80,0,0" Name="vishnu"></Label>
+        <Label Content="Sensor Angle" HorizontalAlignment="Left" Margin="12,166,0,0" Name="label4"></Label>
+        <TextBlock Height="29" HorizontalAlignment="Left" Margin="107,48,0,0" Name="textBlock1" Text="asad1"></TextBlock>
+        <TextBlock Height="26" HorizontalAlignment="Left" Margin="106,85,0,0" Name="textBlock2" Text="asad2"></TextBlock>
+        <TextBlock Height="30" HorizontalAlignment="Left" Margin="106,166,0,0" Name="textBlock3" Text="asad3"></TextBlock>
+        <Button Content="Increase" Height="37" HorizontalAlignment="Left" Margin="198,160,0,0" Name="button1" Click="button1_Click"></Button>
+        <Button Content="Decrease" Height="39" HorizontalAlignment="Left" Margin="306,160,0,0" Name="button2" Click="button2_Click"></Button>
+    </Grid>
+</Window>
