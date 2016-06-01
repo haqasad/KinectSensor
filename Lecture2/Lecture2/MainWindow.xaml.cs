@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// What does namespace represent?
 namespace Lecture2
 {
     /// <summary>
@@ -25,26 +26,26 @@ namespace Lecture2
         {
             InitializeComponent();
         }
-        KinectSensor sensor;
-        private void WindowLoaded(object sender, RoutedEventArgs e)
+        KinectSensor sensor; //??
+        private void WindowLoaded(object sender, RoutedEventArgs e) // RoutedEventArgs ?
         {
             if(KinectSensor.KinectSensors.Count>0)
             {
-                this.sensor = KinectSensor.KinectSensors[0];
-                if(this.sensor != null && !this.sensor.IsRunning)
+                this.sensor = KinectSensor.KinectSensors[0]; // this??
+                if(this.sensor != null && !this.sensor.IsRunning) // ??
                 {
                     this.sensor.Start();
-                    displayInfo();
+                    displayInfo(); // ??
                 }
             }
             else
             {
-                MessageBox.Show("No device is connected with system!");
-                this.Close();
+                MessageBox.Show("No device is connected with system!"); // ??
+                this.Close(); // ?
             }
         }
 
-        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) // CancelEventArgs ?
         {
             if(this.sensor != null && this.sensor.IsRunning)
             {

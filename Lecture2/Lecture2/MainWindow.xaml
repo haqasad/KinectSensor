@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
         Title="KinectInfoBox" Height="350" Width="525" Loaded = "WindowLoaded" Closing = "WindowClosing">
     <Grid>
-        <Label Content="Kinect InfoBox" Height="39" HorizontalAlignment="Left" Margin="12,12,0,0" Name="asad"></Label>
-        <Label Content="ConnectionID" Height="26" HorizontalAlignment="Left" Margin="12,43,0,0" Name="ridoy"></Label>
-        <Label Content="Status" Height="27" HorizontalAlignment="Left" Margin="12,80,0,0" Name="vishnu"></Label>
-        <Label Content="Sensor Angle" HorizontalAlignment="Left" Margin="12,166,0,0" Name="label4"></Label>
+        <Label Content="Kinect InfoBox" Height="39" HorizontalAlignment="Left" Margin="12,29,0,251" Name="label1"></Label>
+        <Label Content="ConnectionID" Height="26" HorizontalAlignment="Left" Margin="12,43,0,0" Name="label2"></Label>
+        <Label Content="Status" Height="27" HorizontalAlignment="Left" Margin="12,80,0,0" Name="label3"></Label>
+        <Label Content="Sensor Angle" HorizontalAlignment="Left" Margin="10,83,0,83" Name="label4"></Label>
         <TextBlock Height="29" HorizontalAlignment="Left" Margin="107,48,0,0" Name="textBlock1" Text="asad1"></TextBlock>
         <TextBlock Height="26" HorizontalAlignment="Left" Margin="106,85,0,0" Name="textBlock2" Text="asad2"></TextBlock>
         <TextBlock Height="30" HorizontalAlignment="Left" Margin="106,166,0,0" Name="textBlock3" Text="asad3"></TextBlock>
