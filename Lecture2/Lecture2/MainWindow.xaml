@@ -4,12 +4,12 @@
         Title="KinectInfoBox" Height="350" Width="525" Loaded = "WindowLoaded" Closing = "WindowClosing">
     <Grid>
         <Label Content="Kinect InfoBox" Height="39" HorizontalAlignment="Left" Margin="12,29,0,251" Name="label1"></Label>
-        <Label Content="ConnectionID" Height="26" HorizontalAlignment="Left" Margin="12,43,0,0" Name="label2"></Label>
-        <Label Content="Status" Height="27" HorizontalAlignment="Left" Margin="12,80,0,0" Name="label3"></Label>
-        <Label Content="Sensor Angle" HorizontalAlignment="Left" Margin="10,83,0,83" Name="label4"></Label>
-        <TextBlock Height="29" HorizontalAlignment="Left" Margin="107,48,0,0" Name="textBlock1" Text="asad1"></TextBlock>
-        <TextBlock Height="26" HorizontalAlignment="Left" Margin="106,85,0,0" Name="textBlock2" Text="asad2"></TextBlock>
-        <TextBlock Height="30" HorizontalAlignment="Left" Margin="106,166,0,0" Name="textBlock3" Text="asad3"></TextBlock>
+        <Label x:Name="label" Content="ConnectionID" HorizontalAlignment="Left" Margin="13,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.605,-0.346"/>
+        <Label x:Name="label2" Content="Status" HorizontalAlignment="Left" Margin="13,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Sensor Angle" HorizontalAlignment="Left" Margin="13,164,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="154,73,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="154,116,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="154,169,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <Button Content="Increase" Height="37" HorizontalAlignment="Left" Margin="198,160,0,0" Name="button1" Click="button1_Click"></Button>
         <Button Content="Decrease" Height="39" HorizontalAlignment="Left" Margin="306,160,0,0" Name="button2" Click="button2_Click"></Button>
     </Grid>
