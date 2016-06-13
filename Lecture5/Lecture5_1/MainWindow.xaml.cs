@@ -31,7 +31,9 @@ namespace Lecture5_1
         }
 
         KinectSensor sensor;
+        /* colorBitmap: holds color information */
         private WriteableBitmap colorBitmap;
+        /* Intermediate storage for the color data received from the camera */
         private byte[] colorPixels;
 
         private int TotalFrames;
@@ -52,6 +54,17 @@ namespace Lecture5_1
                      * Enable(ColorImageFormat format) enables a specified format from a list of formats (details in lecture) */
                     this.sensor.ColorStream.Enable();
                     this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
+
+                    /* WritableBitmap Class
+                     * Inherits from BitmapSource
+                     * Constructor: public WriteableBitmap(int pixelWidth, int pixelHeight, double dpiX, double dpiY,
+                     * PixelFormat pixelFormat, BitmapPalette palette)
+                     * pixelWidth: width of the bitmap
+                     * pixelHeight: height of the bitmap
+                     * dpiX: horizontal dots per inch
+                     * dpiY: vertical dots per inch
+                     * pixelFormat: pixel format
+                     * palette: finite set of colors */
                     this.colorBitmap = new WriteableBitmap(this.sensor.ColorStream.FrameWidth, this.sensor.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
                     this.image1.Source = this.colorBitmap;
 
@@ -78,6 +91,7 @@ namespace Lecture5_1
                 /* width in bytes of a single row of pixel data including padding */
                 int stride = imageFrame.Width * imageFrame.BytesPerPixel;
 
+                /* Write the pixel data into out bitmap */
                 this.colorBitmap.WritePixels(new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight), this.colorPixels, stride, 0);
                 textBox1.Text = "" + GetCurrentFrameRate();
             }
