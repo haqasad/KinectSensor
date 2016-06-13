@@ -70,8 +70,7 @@ namespace Lecture4_1
 
                 // Write the pixel data into our bitmap
                 this.colorBitmap.WritePixels(
-                    new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
-                        this.colorPixels, stride, 0);
+                    new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight), this.colorPixels, stride, 0);
             }
         }
     }
