@@ -47,10 +47,15 @@ namespace Lecture5_1
                 this.sensor = KinectSensor.KinectSensors[0];
                 if (this.sensor != null && !this.sensor.IsRunning)
                 {
-                    //this.sensor.ColorStream.Enable();
-                    //this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
+                    /* public void Enable() and public void Enable(ColorImageFormat format) are under the class ColorImageStream
+                     * Enable() enables RgbResolution640x480Fps30 by default
+                     * Enable(ColorImageFormat format) enables a specified format from a list of formats (details in lecture) */
+                    this.sensor.ColorStream.Enable();
+                    this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
                     this.colorBitmap = new WriteableBitmap(this.sensor.ColorStream.FrameWidth, this.sensor.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
                     this.image1.Source = this.colorBitmap;
+
+                    /* Event handler */
                     this.sensor.ColorFrameReady += this.colorFrameReady;                    
                     this.sensor.Start();
                 }
@@ -62,12 +67,15 @@ namespace Lecture5_1
             }
         }
 
+        /* Retrieving the Color Image Frame */
         void colorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
             using (ColorImageFrame imageFrame = e.OpenColorImageFrame())
             {
                 if (null == imageFrame)
                     return;
+
+                /* width in bytes of a single row of pixel data including padding */
                 int stride = imageFrame.Width * imageFrame.BytesPerPixel;
 
                 this.colorBitmap.WritePixels(new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight), this.colorPixels, stride, 0);
