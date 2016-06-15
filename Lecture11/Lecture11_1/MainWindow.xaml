@@ -1,0 +1,31 @@
+﻿<Window x:Class="Lecture11_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        Title="MainWindow" Height="320" Width="560" Loaded="WindowLoaded" Closing="WindowClosing">
+    <Grid>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="220" Margin="15,10,0,0" VerticalAlignment="Top" Width="250"/>
+        <GroupBox x:Name="groupBox0" Header="Sound Source Localization" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="130" Width="265">
+            <Grid>
+                <Label x:Name="label0" Content="Sound Source Angle" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label1" Content="Confidence Level" HorizontalAlignment="Left" Margin="5,40,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label2" Content="Beam Angle" HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="soundSourceAngle" HorizontalAlignment="Left" Height="23" Margin="130,5,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="confidenceLevel" HorizontalAlignment="Left" Height="23" Margin="110,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="140"/>
+                <TextBox x:Name="soundBeamAngle" HorizontalAlignment="Left" Height="23" Margin="130,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBox1" Header="Audio Processing" HorizontalAlignment="Left" Margin="280,150,0,0" VerticalAlignment="Top" Height="90" Width="265">
+            <Grid>
+                <CheckBox x:Name="noiseSupression" Content="Noise Supression" HorizontalAlignment="Left" Margin="15,5,0,0" VerticalAlignment="Top" Checked="noiseSupression_Checked" Unchecked="noiseSupression_Unchecked"/>
+                <CheckBox x:Name="echoCancellation" Content="Echo Cancelation" HorizontalAlignment="Left" Margin="15,25,0,0" VerticalAlignment="Top" Checked="echoCancellation_Checked" Unchecked="echoCancellation_Unchecked"/>
+                <CheckBox x:Name="gainControl" Content="Automatic Gain Control" HorizontalAlignment="Left" Margin="15,45,0,0" VerticalAlignment="Top" Checked="gainControl_Checked" Unchecked="gainControl_Unchecked"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="startAudioStreamBtn" Content="Start Audio Stream" HorizontalAlignment="Left" Margin="15,255,0,0" VerticalAlignment="Top" Width="110" Click="startAudioStreamBtn_Click"/>
+        <Button x:Name="stopAudioStreamBtn" Content="Stop Audio Stream" HorizontalAlignment="Left" Margin="155,255,0,0" VerticalAlignment="Top" Width="110" Click="stopAudioStreamBtn_Click"/>
+        <MediaElement x:Name="kinectaudioPlayer" HorizontalAlignment="Left" Height="20" Margin="400,255,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="playBtn" Content="Play" HorizontalAlignment="Left" Margin="495,255,0,0" VerticalAlignment="Top" Width="50" Click="playBtn_Click"/>
+        <Button x:Name="startBtn" Content="Start" HorizontalAlignment="Left" Margin="280,255,0,0" VerticalAlignment="Top" Width="50" Click="startBtn_Click"/>
+        <Button x:Name="stopBtn" Content="Stop" HorizontalAlignment="Left" Margin="340,255,0,0" VerticalAlignment="Top" Width="50"/>
+    </Grid>
+</Window>
