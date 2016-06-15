@@ -52,7 +52,7 @@ namespace Lecture5_1
                     /* public void Enable() and public void Enable(ColorImageFormat format) are under the class ColorImageStream
                      * Enable() enables RgbResolution640x480Fps30 by default
                      * Enable(ColorImageFormat format) enables a specified format from a list of formats (details in lecture) */
-                    this.sensor.ColorStream.Enable();
+                    this.sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
                     this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
 
                     /* WritableBitmap Class
@@ -87,7 +87,7 @@ namespace Lecture5_1
             {
                 if (null == imageFrame)
                     return;
-
+                imageFrame.CopyPixelDataTo(colorPixels);
                 /* width in bytes of a single row of pixel data including padding */
                 int stride = imageFrame.Width * imageFrame.BytesPerPixel;
 
