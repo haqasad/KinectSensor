@@ -35,7 +35,7 @@ namespace Lecture11_1
         byte[] colorPixels;
         // Skeleton[] totalSkeleton = new Skeleton[6];
         Stream audioStream;
-        string wavfilename = "c:\\temp\\kinectAudio.wav";
+        string wavfilename = "C:\\Users\\Asadul Haque\\Source\\Repos\\KinectSensor\\Lecture11\\Lecture11_1\\bin\\Debug\\kinectAudio.wav";
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {

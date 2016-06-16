@@ -23,9 +23,8 @@
         </GroupBox>
         <Button x:Name="startAudioStreamBtn" Content="Start Audio Stream" HorizontalAlignment="Left" Margin="15,255,0,0" VerticalAlignment="Top" Width="110" Click="startAudioStreamBtn_Click"/>
         <Button x:Name="stopAudioStreamBtn" Content="Stop Audio Stream" HorizontalAlignment="Left" Margin="155,255,0,0" VerticalAlignment="Top" Width="110" Click="stopAudioStreamBtn_Click"/>
-        <MediaElement x:Name="kinectaudioPlayer" HorizontalAlignment="Left" Height="20" Margin="400,255,0,0" VerticalAlignment="Top" Width="85"/>
+        <MediaElement x:Name="kinectaudioPlayer" HorizontalAlignment="Left" Height="20" Margin="335,255,0,0" VerticalAlignment="Top" Width="155"/>
         <Button x:Name="playBtn" Content="Play" HorizontalAlignment="Left" Margin="495,255,0,0" VerticalAlignment="Top" Width="50" Click="playBtn_Click"/>
         <Button x:Name="startBtn" Content="Start" HorizontalAlignment="Left" Margin="280,255,0,0" VerticalAlignment="Top" Width="50" Click="startBtn_Click"/>
-        <Button x:Name="stopBtn" Content="Stop" HorizontalAlignment="Left" Margin="340,255,0,0" VerticalAlignment="Top" Width="50"/>
     </Grid>
 </Window>
