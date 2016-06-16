@@ -27,7 +27,8 @@ namespace Lecture11_1
         public MainWindow()
         {
             InitializeComponent();
-            //Loaded += new RoutedEventHandler(WindowLoaded);           
+            Loaded += new RoutedEventHandler(WindowLoaded);
+            Closing += new CancelEventHandler(WindowClosing);
         }
 
         KinectSensor sensor;
@@ -35,7 +36,7 @@ namespace Lecture11_1
         byte[] colorPixels;
         // Skeleton[] totalSkeleton = new Skeleton[6];
         Stream audioStream;
-        string wavfilename = "C:\\Users\\Asadul Haque\\Source\\Repos\\KinectSensor\\Lecture11\\Lecture11_1\\bin\\Debug\\kinectAudio.wav";
+        string wavfilename = "C:\\Users\\haqasad\\Source\\Repos\\KinectSensor\\Lecture11\\Lecture11_1\\bin\\Debug\\kinectAudio.wav";
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
