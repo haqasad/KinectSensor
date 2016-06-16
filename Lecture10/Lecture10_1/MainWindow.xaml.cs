@@ -28,12 +28,18 @@ namespace Lecture10_1
         }
 
         KinectSensor sensor;
+
         Skeleton[] totalSkeleton = new Skeleton[6];
+        Skeleton skeleton;
+        int currentSkeletonID = 0;
+
         WriteableBitmap colorBitmap;
         byte[] colorPixels;
-        Skeleton skeleton;
+        
         Thing thing = new Thing();
         double gravity = 0.017;
+        
+
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {            
@@ -97,13 +103,67 @@ namespace Lecture10_1
                 {
                     this.MapJointsWithUIElement(skeleton);
                 }
+                if (skeleton != null && this.currentSkeletonID != skeleton.TrackingId)
+                {
+                    this.currentSkeletonID = skeleton.TrackingId;
+                    //int totalTrackedJoints = skeleton.Joints.Where(item => item.TrackingState == JointTrackingState.Tracked).Count();
+                    //string TrackedTime = DateTime.Now.ToString("hh:mm:ss");
+                    //string status = "Skeleton Id: " + this.currentSkeletonID + ", total tracked joints: " + totalTrackedJoints + ", TrackTime: " + TrackedTime + "\n";
+                    //this.textBlock1.Text += status;
+                }
+                DrawSkeleton(skeleton);
+
             }
-           
+
             Point handPt = ScalePosition(skeleton.Joints[JointType.HandRight].Position);
             if (thing.Hit(handPt))
             {
                 this.thing.YVelocity = -1.0 * this.thing.YVelocity;
             }
+        }
+
+        private void DrawSkeleton(Skeleton skeleton)
+        {
+            drawBone(skeleton.Joints[JointType.Head], skeleton.Joints[JointType.ShoulderCenter]);
+            drawBone(skeleton.Joints[JointType.ShoulderCenter], skeleton.Joints[JointType.Spine]);
+
+            drawBone(skeleton.Joints[JointType.ShoulderCenter], skeleton.Joints[JointType.ShoulderLeft]);
+            drawBone(skeleton.Joints[JointType.ShoulderLeft], skeleton.Joints[JointType.ElbowLeft]);
+            drawBone(skeleton.Joints[JointType.ElbowLeft], skeleton.Joints[JointType.WristLeft]);
+            drawBone(skeleton.Joints[JointType.WristLeft], skeleton.Joints[JointType.HandLeft]);
+
+            drawBone(skeleton.Joints[JointType.ShoulderCenter], skeleton.Joints[JointType.ShoulderRight]);
+            drawBone(skeleton.Joints[JointType.ShoulderRight], skeleton.Joints[JointType.ElbowRight]);
+            drawBone(skeleton.Joints[JointType.ElbowRight], skeleton.Joints[JointType.WristRight]);
+            drawBone(skeleton.Joints[JointType.WristRight], skeleton.Joints[JointType.HandRight]);
+
+            drawBone(skeleton.Joints[JointType.Spine], skeleton.Joints[JointType.HipCenter]);
+            drawBone(skeleton.Joints[JointType.HipCenter], skeleton.Joints[JointType.HipLeft]);
+            drawBone(skeleton.Joints[JointType.HipLeft], skeleton.Joints[JointType.KneeLeft]);
+            drawBone(skeleton.Joints[JointType.KneeLeft], skeleton.Joints[JointType.AnkleLeft]);
+            drawBone(skeleton.Joints[JointType.AnkleLeft], skeleton.Joints[JointType.FootLeft]);
+
+            drawBone(skeleton.Joints[JointType.HipCenter], skeleton.Joints[JointType.HipRight]);
+            drawBone(skeleton.Joints[JointType.HipRight], skeleton.Joints[JointType.KneeRight]);
+            drawBone(skeleton.Joints[JointType.KneeRight], skeleton.Joints[JointType.AnkleRight]);
+            drawBone(skeleton.Joints[JointType.AnkleRight], skeleton.Joints[JointType.FootRight]);
+
+        }
+
+        void drawBone(Joint trackedJoint1, Joint trackedJoint2)
+        {
+            Line bone = new Line();
+            bone.Stroke = Brushes.Red;
+            bone.StrokeThickness = 3;
+            Point joint1 = this.ScalePosition(trackedJoint1.Position);
+            bone.X1 = joint1.X;
+            bone.Y1 = joint1.Y;
+
+            Point joint2 = this.ScalePosition(trackedJoint2.Position);
+            bone.X2 = joint2.X;
+            bone.Y2 = joint2.Y;
+
+            canvas1.Children.Add(bone);
         }
 
         private void MapJointsWithUIElement(Skeleton skeleton)
