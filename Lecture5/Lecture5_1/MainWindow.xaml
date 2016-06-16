@@ -18,8 +18,8 @@
         <Label x:Name="label4" Content="Elevation Angle" HorizontalAlignment="Left" Margin="370,189,0,0" VerticalAlignment="Top" Width="94"/>
         <Button x:Name="button" Content="+" HorizontalAlignment="Left" Margin="538,192,0,0" VerticalAlignment="Top" Width="21" Click="IncrementAngle"/>
         <Button x:Name="button1" Content="-" HorizontalAlignment="Left" Margin="573,192,0,0" VerticalAlignment="Top" Width="21" Click="DecrementAngle"/>
-        <CheckBox x:Name="checkBox1" Content="Save Periodically" HorizontalAlignment="Left" Margin="472,225,0,0" VerticalAlignment="Top" Width="118" Unchecked="PeriodicSavingChanged" Checked="SaveImage"/>
-        <Button x:Name="button2" Content="Save Image" HorizontalAlignment="Left" Margin="473,258,0,0" VerticalAlignment="Top" Width="75"/>
+        <CheckBox x:Name="checkBox1" Content="Save Periodically" HorizontalAlignment="Left" Margin="472,225,0,0" VerticalAlignment="Top" Width="118" Unchecked="PeriodicSavingChanged" Checked="PeriodicSavingChanged"/>
+        <Button x:Name="button2" Content="Save Image" HorizontalAlignment="Left" Margin="473,258,0,0" VerticalAlignment="Top" Width="75" Click="SaveImage"/>
         <TextBox x:Name="AngleBox" HorizontalAlignment="Left" Height="23" Margin="473,191,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="60"/>
 
     </Grid>

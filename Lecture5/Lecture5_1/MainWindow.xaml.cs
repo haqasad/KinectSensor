@@ -129,7 +129,7 @@ namespace Lecture5_1
 
         public void StartTimer()
         {
-            this.timer.Interval = new TimeSpan(0, 0, 10);
+            this.timer.Interval = new TimeSpan(0, 0, 2);
             this.timer.Start();
             this.timer.Tick += handleTickEvent;
         }
