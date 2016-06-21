@@ -15,6 +15,7 @@
         <TextBox x:Name="wordsRecognized" HorizontalAlignment="Left" Height="23" Margin="300,150,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="confidenceTxt" HorizontalAlignment="Left" Height="23" Margin="300,220,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="statusBar" HorizontalAlignment="Left" Height="23" Margin="10,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="200"/>
+        <Label x:Name="label3" Content="Say Close the Application - to quit" HorizontalAlignment="Left" Margin="300,20,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
