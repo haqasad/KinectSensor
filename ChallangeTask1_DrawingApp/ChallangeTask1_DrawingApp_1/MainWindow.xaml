@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:ChallangeTask1_DrawingApp_1"
         mc:Ignorable="d"
         Title="Kinect Draw" Height="530" Width="900" Loaded="WindowLoaded" Closing="WindowClosing">
-    
+   <!--Store data as a resource. This data can be accessed from any place in the program--> 
     <Window.Resources>
         <SolidColorBrush x:Key="colorChange" Color="Black"/>
     </Window.Resources>
     
     <Grid>
         <Canvas x:Name="skeletonCanvas" HorizontalAlignment="Left" Height="480" Margin="10,10,0,0" VerticalAlignment="Top" Width="640">
+            <!--StaticResource keyword looks up any reference of colorChange
+            It defines the resource as static resource
+            The value of Static resource is determined at the time of loading-->
             <Ellipse x:Name="righthand" Fill="{StaticResource colorChange}" Height="20" Canvas.Left="39" Stroke="Black" StrokeThickness="3" Canvas.Top="42" Width="20"/>
             <Polyline Name="trail" Stroke="{StaticResource colorChange}" StrokeThickness="3"/>
         </Canvas>

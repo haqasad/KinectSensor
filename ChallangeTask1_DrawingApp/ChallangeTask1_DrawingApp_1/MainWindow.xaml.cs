@@ -55,7 +55,7 @@ namespace ChallangeTask1_DrawingApp_1
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
             this.sensor = KinectSensor.KinectSensors[0];
-            this.sensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated;
+            this.sensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Default;
 
             /* SkeletonFrameReady is an event
              * public event EventHandler<SkeletonFrameReadyEventArgs> SkeletonFrameReady
@@ -172,6 +172,7 @@ namespace ChallangeTask1_DrawingApp_1
             double y = mappedPoint.Y;
             Point trailPoint = new Point();
             trail.Points.Add(new Point(trailPoint.X = x, trailPoint.Y = y));
+            //skeletonCanvas.Children.Add(trail);
         }
 
         /* ScalePosition method: takes input of a 3D position (X, Y, Z) in skeleton, converts them into a single
@@ -198,8 +199,15 @@ namespace ChallangeTask1_DrawingApp_1
             return new Point(depthPoint.X, depthPoint.Y);
         }
 
+        /* redbutton_Click eventhandler method:
+         * Changes the color property of the drawn line
+         * 
+         * SolicColorBrush (sealed) class:
+         * Paints an area with a solid color */
         private void redbutton_Click(object sender, RoutedEventArgs e)
         {
+            /* this.Resources is a type object
+             * an explicit casting is necessary to equate type of both sides */
             SolidColorBrush colorChange = (SolidColorBrush)this.Resources["colorChange"];
             colorChange.Color = Colors.Red;
         }
@@ -222,12 +230,11 @@ namespace ChallangeTask1_DrawingApp_1
             colorChange.Color = Colors.Yellow;
         }
 
+        /* clrcanvasbutton_Click eventhandler method:
+         * Removes the polyline from canvas */
         private void clrcanvasbutton_Click(object sender, RoutedEventArgs e)
         {
-            if (skeletonCanvas.Children.Count != 0)
-            {
-                skeletonCanvas.Children.Remove(trail);
-            }
+            skeletonCanvas.Children.Remove(trail);                                              
         }
 
         private void WindowClosing(object sender, CancelEventArgs e)
