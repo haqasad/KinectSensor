@@ -150,9 +150,14 @@ namespace Lecture9_2
         }
 
         void drawArc()
-        {
-            Point joint1 = this.ScalePosition(skeleton.Joints[JointType.WristRight].Position);
+        {                        
+            Point joint1 = this.ScalePosition(skeleton.Joints[JointType.ElbowRight].Position);
             Point joint2 = this.ScalePosition(skeleton.Joints[JointType.Spine].Position);
+            Point joint3 = this.ScalePosition(skeleton.Joints[JointType.ShoulderCenter].Position);
+            //Point joint4;
+            double x = (joint2.X + joint3.X) / 2;
+            double y = (joint2.Y + joint3.Y) / 2;
+
             /* PathFigure class: represents a subsection of a geometry, a single connected series of two-dimensional
              * geometric segments */
             PathFigure pthFigure = new PathFigure();
@@ -166,7 +171,7 @@ namespace Lecture9_2
             /* ArcSegment Point:
              * Property;
              * Gets or sets the endpoint of the elliptical arc */
-            arcSeg.Point = new Point(joint2.X, joint2.Y);
+            arcSeg.Point = new Point(x, y);
             /* ArcSegment Size:
              * Property;
              * Gets or sets the x and y radius of the arc as a Size structure */
