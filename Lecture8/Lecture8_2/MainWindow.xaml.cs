@@ -33,7 +33,8 @@ namespace Lecture8_2
         //MainWindow m = new MainWindow();
         
         KinectSensor sensor;
-        Skeleton[] totalSkeleton = new Skeleton[6];        
+        Skeleton[] totalSkeleton = new Skeleton[6];
+        Point x;      
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -77,11 +78,11 @@ namespace Lecture8_2
                 }
                 if (firstSkeleton.Joints[JointType.WristRight].TrackingState == JointTrackingState.Tracked)
                 {
-                    this.MapJointsWithUIElement(firstSkeleton);
+                    this.MapJointsWithUIElement(firstSkeleton);                    
                 }
-                
+                //return firstSkeleton;
             }
-
+            
         }                                 
 
         private struct Thing
@@ -111,11 +112,13 @@ namespace Lecture8_2
 
         Thing thing = new Thing();
                 
-        private void MapJointsWithUIElement(Skeleton skeleton)
+        private Point MapJointsWithUIElement(Skeleton skeleton)
         {
             Point mappedPoint = ScalePosition(skeleton.Joints[JointType.WristRight].Position);
             Canvas.SetLeft(righthand, mappedPoint.X);
             Canvas.SetTop(righthand, mappedPoint.Y);
+            return mappedPoint;
+            //x = mappedPoint;
 
             //thing.p = new Pen();
             //thing.p.Thickness = 3;
@@ -161,7 +164,14 @@ namespace Lecture8_2
             //b.Color = Colors.Red;
             //colorChange.Color = Colors.Red;
             //thing.ellipse.SetValue(Shape.FillProperty, new SolidColorBrush(Colors.Red));
-            thing.change(1);
+            //thing.change(1);
+            
+            Polyline redpolyline = new Polyline();
+            double m = mappedPoint.X;
+            double n = mappedPoint.Y;
+            Point trailPoint = new Point();
+            redpolyline.Points.Add(new Point(trailPoint.X = m, trailPoint.Y = n));
+
         }
 
         private void bluebutton_Click(object sender, RoutedEventArgs e)
