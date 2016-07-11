@@ -9,6 +9,6 @@
     <Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Height="226" Margin="10,10,0,0" VerticalAlignment="Top" Width="238"/>
         <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="226" Margin="253,10,0,0" VerticalAlignment="Top" Width="254"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="497" Height="68"/>
+        <!--TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" Height="20"/-->
     </Grid>
 </Window>

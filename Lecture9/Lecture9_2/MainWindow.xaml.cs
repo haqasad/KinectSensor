@@ -35,7 +35,7 @@ namespace Lecture9_2
         WriteableBitmap colorBitmap;
         byte[] colorPixels;
         Skeleton skeleton;
-        int currentSkeletonID = 0;
+        //int currentSkeletonID = 0;
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -78,7 +78,7 @@ namespace Lecture9_2
         void skeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             canvas1.Children.Clear();
-            textBox.Clear();
+            
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame())
             {
                 if (skeletonFrame == null) { return; }
@@ -86,10 +86,7 @@ namespace Lecture9_2
                 skeleton = (from trackskeleton in totalSkeleton where trackskeleton.TrackingState == SkeletonTrackingState.Tracked select trackskeleton).FirstOrDefault();
                 if (skeleton == null)
                     return;
-                if (skeleton != null && this.currentSkeletonID != skeleton.TrackingId)
-                {
-                    this.textBox.Text += "" + calculateAngle();
-                }
+                
                 DrawSkeleton(skeleton);
                 drawArc();
             }
@@ -136,16 +133,27 @@ namespace Lecture9_2
 
         private string calculateAngle()
         {
-            Vector joint11 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ElbowRight].Position);
-            Vector joint12 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ShoulderRight].Position);
+            //Vector joint11 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ElbowRight].Position);
+            //Vector joint12 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ShoulderRight].Position);
 
-            Vector joint21 = (Vector)this.ScalePosition(skeleton.Joints[JointType.Spine].Position);
-            Vector joint22 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ShoulderCenter].Position);
+            //Vector joint21 = (Vector)this.ScalePosition(skeleton.Joints[JointType.Spine].Position);
+            //Vector joint22 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ShoulderCenter].Position);
 
-            Vector rightArm = Vector.Add(joint11, joint12);
-            Vector torso = Vector.Add(joint21, joint22);
-            
-            string angle = Vector.AngleBetween(rightArm, torso).ToString("F2");
+            //Vector rightArm = Vector.Add(joint11, joint12);
+            //Vector torso = Vector.Add(joint21, joint22);
+
+            Point rightElbow = this.ScalePosition(skeleton.Joints[JointType.ElbowRight].Position);
+            Point rightShoulder = this.ScalePosition(skeleton.Joints[JointType.ShoulderRight].Position);
+            Point rightHip = this.ScalePosition(skeleton.Joints[JointType.HipRight].Position);
+
+            //Vector joint21 = (Vector)this.ScalePosition(skeleton.Joints[JointType.Spine].Position);
+            //Vector joint22 = (Vector)this.ScalePosition(skeleton.Joints[JointType.ShoulderCenter].Position);
+
+            double dist_rhtElbow_rhtShoulder = Math.Sqrt(Math.Pow((rightElbow.X - rightShoulder.X), 2) + Math.Pow((rightElbow.Y - rightShoulder.Y), 2));
+            double dist_rhtShoulder_rhtHip = Math.Sqrt(Math.Pow((rightShoulder.X - rightHip.X), 2) + Math.Pow((rightShoulder.Y - rightHip.Y), 2));
+            double dist_rhtHip_rhtElbow = Math.Sqrt(Math.Pow((rightHip.X - rightElbow.X), 2) + Math.Pow((rightHip.Y - rightElbow.Y), 2));
+            float angleDegree = (float)(Math.Acos((Math.Pow(dist_rhtElbow_rhtShoulder, 2) + Math.Pow(dist_rhtShoulder_rhtHip, 2) - Math.Pow(dist_rhtHip_rhtElbow, 2)) / (2 * dist_rhtElbow_rhtShoulder * dist_rhtShoulder_rhtHip)) * (180 / Math.PI));
+            string angle = angleDegree.ToString("F2");
             return angle;
         }
 
@@ -154,9 +162,15 @@ namespace Lecture9_2
             Point joint1 = this.ScalePosition(skeleton.Joints[JointType.ElbowRight].Position);
             Point joint2 = this.ScalePosition(skeleton.Joints[JointType.Spine].Position);
             Point joint3 = this.ScalePosition(skeleton.Joints[JointType.ShoulderCenter].Position);
-            //Point joint4;
+            
             double x = (joint2.X + joint3.X) / 2;
             double y = (joint2.Y + joint3.Y) / 2;
+
+            TextBox textBox = new TextBox();
+            textBox.Text = "" + calculateAngle();
+            Canvas.SetLeft(textBox, (x+5));
+            Canvas.SetTop(textBox, y);
+            canvas1.Children.Add(textBox);
 
             /* PathFigure class: represents a subsection of a geometry, a single connected series of two-dimensional
              * geometric segments */
