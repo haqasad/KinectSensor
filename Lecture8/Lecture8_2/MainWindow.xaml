@@ -13,9 +13,44 @@
     <Grid>
         <Canvas x:Name="skeletonCanvas" HorizontalAlignment="Left" Height="480" Margin="10,10,0,0" VerticalAlignment="Top" Width="640">
             <Ellipse x:Name="righthand" Fill="{DynamicResource colorChange}" Height="20" Canvas.Left="39" Stroke="Black" StrokeThickness="3" Canvas.Top="42" Width="20"/>
-            <!--Polyline Name="trail" Stroke="{StaticResource colorChange}" StrokeThickness="3"/-->
+            <Path x:Name="arcPath">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigureCollection>
+                                <PathFigure x:Name="pathfigure1">
+                                    <PathSegmentCollection>
+                                        <PolyLineSegment x:Name="line"/>
+                                        <!--PolyLineSegment x:Name="line2"/-->
+                                    </PathSegmentCollection>
+                                </PathFigure>
+                            </PathFigureCollection>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <Path x:Name="arcPath2">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigureCollection>
+                                <PathFigure StartPoint="0,100">
+                                    <PathSegmentCollection>
+                                        <PolyLineSegment x:Name="line2"/>
+                                        <!--PolyLineSegment x:Name="line2"/-->
+                                    </PathSegmentCollection>
+                                </PathFigure>
+                            </PathFigureCollection>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <!--Polyline Name="redpolyline"/-->
+            <!--Polyline Name="bluepolyline" StrokeThickness="5"/-->
             <!--Ellipse x:Name="ellipse" Fill="{StaticResource colorChange}" Height="5" Canvas.Left="39" Stroke="{StaticResource colorChange}" StrokeThickness="3" Canvas.Top="42" Width="5"/-->
         </Canvas>
+        
+        
 
         <GroupBox x:Name="paletteGroupBox" Header="Palette" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="200" Height="150">
             <Grid>

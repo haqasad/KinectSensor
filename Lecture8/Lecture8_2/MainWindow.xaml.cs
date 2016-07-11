@@ -34,7 +34,7 @@ namespace Lecture8_2
         
         KinectSensor sensor;
         Skeleton[] totalSkeleton = new Skeleton[6];
-        Point x;      
+        //Point x;      
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -78,46 +78,126 @@ namespace Lecture8_2
                 }
                 if (firstSkeleton.Joints[JointType.WristRight].TrackingState == JointTrackingState.Tracked)
                 {
-                    this.MapJointsWithUIElement(firstSkeleton);                    
+                    getPoint = this.MapJointsWithUIElement(firstSkeleton);
+                    //thing.getPoint = thing.MapJointsWithUIElement(firstSkeleton);                    
                 }
                 //return firstSkeleton;
             }
             
         }                                 
 
-        private struct Thing
+        //private struct Thing
+        //{
+        //    //public Point Center;
+        //    //public Polyline ellipse;
+        //    //public Ellipse ellipse;
+        //    //Point mappedPoint = ScalePosition(skeleton.Joints[JointType.WristRight].Position);
+        //    //KinectSensor sensor;
+        //    Point trailPoint;
+        //    //public Pen p;
+        //    public void change(int t)
+        //    {
+        //        int caseSwitch = t;
+        //        switch (caseSwitch)
+        //        {
+        //            case 1:
+        //                //Polyline redpolyline = new Polyline();
+        //                redpolyline.Stroke = new SolidColorBrush(Colors.Red);
+        //                redpolyline.Points.Add(new Point(trailPoint.X = getPoint.X, trailPoint.Y = getPoint.Y));                       
+        //                break;
+        //            case 2:
+        //                Polyline bluepolyline = new Polyline();
+        //                bluepolyline.Fill = new SolidColorBrush(Colors.Red);
+        //                bluepolyline.Points.Add(new Point(trailPoint.X = getPoint.X, trailPoint.Y = getPoint.Y));
+        //                break;
+        //            default:
+        //                Polyline defaultpolyline = new Polyline();
+        //                defaultpolyline.Stroke = new SolidColorBrush(Colors.Black);
+        //                defaultpolyline.Points.Add(new Point(trailPoint.X = getPoint.X, trailPoint.Y = getPoint.Y));
+        //                break;
+        //        }
+
+        //    }
+
+        //    public Point getPoint { get; set; }
+
+        //    //public Point MapJointsWithUIElement(Skeleton skeleton)
+        //    //{
+        //    //    Point mappedPoint = ScalePosition(skeleton.Joints[JointType.WristRight].Position);
+        //    //    //Canvas.SetLeft(righthand, mappedPoint.X);
+        //    //    //Canvas.SetTop(righthand, mappedPoint.Y);
+        //    //    return mappedPoint;
+        //    //}
+
+        //    //private Point ScalePosition(SkeletonPoint skeletonPoint)
+        //    //{
+        //    //    DepthImagePoint depthPoint = new DepthImagePoint();
+        //    //    if (this.sensor != null)
+        //    //    {
+        //    //        depthPoint = (this.sensor.CoordinateMapper.MapSkeletonPointToDepthPoint(skeletonPoint, DepthImageFormat.Resolution640x480Fps30));
+        //    //    }                                
+        //    //    return new Point(depthPoint.X, depthPoint.Y);
+        //    //}
+
+        //}
+
+        //Thing thing = new Thing();
+        public Point getPoint { get; set; }
+
+        public void change(int t)
         {
-            //public Point Center;
-            //public Polyline ellipse;
-            public Ellipse ellipse;
-            //Point mappedPoint = ScalePosition(skeleton.Joints[JointType.WristRight].Position);
-
-            //public Pen p;
-            public void change(int t)
+            //Point trailPoint = new Point();
+            //trailPoint.X = getPoint.X;
+            //trailPoint.Y = getPoint.Y;
+            int caseSwitch = t;
+            switch (caseSwitch)
             {
-                int caseSwitch = t;
-                switch (caseSwitch)
-                {
-                    case 1:
-                        ellipse.Fill = new SolidColorBrush(Colors.Red);
-                        break;
-                    case 2:
-                        ellipse.Fill = new SolidColorBrush(Colors.Blue);
-                        break;
-                }
-
+                case 1:
+                    //this.redpolyline = new Polyline();
+                    //redpolyline = new Polyline();
+                    arcPath.Stroke = new SolidColorBrush(Colors.Red);
+                    //redpolyline.Points.Add(new Point(trailPoint.X, trailPoint.Y));
+                    //skeletonCanvas.Children.Add(redpolyline);
+                    break;
+                case 2:
+                    //Polyline bluepolyline = new Polyline();
+                    arcPath.Stroke = null;
+                    arcPath2.Stroke = new SolidColorBrush(Colors.Blue);                    
+                    //bluepolyline.Points.Add(new Point(trailPoint.X = getPoint.X, trailPoint.Y = getPoint.Y));
+                    break;
+                default:
+                    Polyline defaultpolyline = new Polyline();
+                    defaultpolyline.Stroke = new SolidColorBrush(Colors.Black);
+                    //defaultpolyline.Points.Add(new Point(trailPoint.X = getPoint.X, trailPoint.Y = getPoint.Y));
+                    break;
             }
 
         }
 
-        Thing thing = new Thing();
-                
+        //Polyline redpolyline;redpolyline = new Polyline();
         private Point MapJointsWithUIElement(Skeleton skeleton)
         {
             Point mappedPoint = ScalePosition(skeleton.Joints[JointType.WristRight].Position);
             Canvas.SetLeft(righthand, mappedPoint.X);
             Canvas.SetTop(righthand, mappedPoint.Y);
-            return mappedPoint;
+
+            
+            //Point trailPoint;
+            double x = mappedPoint.X;
+            double y = mappedPoint.Y;
+            Point trailPoint = new Point();
+            //Point trailPoint2 = new Point();
+            line.Points.Add(new Point(trailPoint.X = x, trailPoint.Y = y));
+            line2.Points.Add(new Point(trailPoint.X = x, trailPoint.Y = y));
+            //redpolyline = new Polyline();
+            //redpolyline.Stroke = new SolidColorBrush(Colors.Red);
+            //redpolyline.Points.Add(new Point(trailPoint.X = x, trailPoint.Y = y));
+            //skeletonCanvas.Children.Add(redpolyline);
+            //bluepolyline.Points.Add(new Point(trailPoint2.X = x, trailPoint2.Y = y));
+            //skeletonCanvas.Children.Add(bluepolyline);
+            return new Point(mappedPoint.X, mappedPoint.Y);
+            //int t;
+            //return mappedPoint;
             //x = mappedPoint;
 
             //thing.p = new Pen();
@@ -130,13 +210,13 @@ namespace Lecture8_2
             //Point trailPoint = new Point();
             //thing.ellipse.Points.Add(new Point(trailPoint.X = x, trailPoint.Y = y));
 
-            thing.ellipse = new Ellipse();
-            thing.ellipse.Width = 5;
-            thing.ellipse.Height = 5;
-            thing.ellipse.Fill = (SolidColorBrush)this.Resources["colorChange"];
-            thing.ellipse.SetValue(Canvas.LeftProperty, mappedPoint.X);
-            thing.ellipse.SetValue(Canvas.TopProperty, mappedPoint.Y);
-            skeletonCanvas.Children.Add(thing.ellipse);
+            //thing.ellipse = new Ellipse();
+            //thing.ellipse.Width = 5;
+            //thing.ellipse.Height = 5;
+            //thing.ellipse.Fill = (SolidColorBrush)this.Resources["colorChange"];
+            //thing.ellipse.SetValue(Canvas.LeftProperty, mappedPoint.X);
+            //thing.ellipse.SetValue(Canvas.TopProperty, mappedPoint.Y);
+            //skeletonCanvas.Children.Add(thing.ellipse);
 
             //Ellipse ellipse = new Ellipse()
             //{
@@ -165,19 +245,21 @@ namespace Lecture8_2
             //colorChange.Color = Colors.Red;
             //thing.ellipse.SetValue(Shape.FillProperty, new SolidColorBrush(Colors.Red));
             //thing.change(1);
-            
-            Polyline redpolyline = new Polyline();
-            double m = mappedPoint.X;
-            double n = mappedPoint.Y;
-            Point trailPoint = new Point();
-            redpolyline.Points.Add(new Point(trailPoint.X = m, trailPoint.Y = n));
+
+            //Polyline redpolyline = new Polyline();
+            //double m = mappedPoint.X;
+            //double n = mappedPoint.Y;
+            //Point trailPoint = new Point();
+            //redpolyline.Points.Add(new Point(trailPoint.X = m, trailPoint.Y = n));
+            change(1);
 
         }
 
         private void bluebutton_Click(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush colorChange = (SolidColorBrush)this.Resources["colorChange"];
-            colorChange.Color = Colors.Blue;
+            //SolidColorBrush colorChange = (SolidColorBrush)this.Resources["colorChange"];
+            //colorChange.Color = Colors.Blue;
+            change(2);
         }
 
         private void greenbutton_Click(object sender, RoutedEventArgs e)
